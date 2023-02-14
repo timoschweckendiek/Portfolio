@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Key="1" type="Deltares.Probabilistic.Project" application="Deltares.Probabilistic.Application" version="2.4.2.2739" Succeeded="True" Calculated="True" Interrupted="False" ComponentName="" ProbabilisticTask="Failure">
+  <RunOptions Key="2" LowestLogMessageType="Warning">
+    <PreProcessor Key="3" Arguments="" PythonVersion="3" />
+    <PostProcessor Key="4" Arguments="" PythonVersion="3" />
+  </RunOptions>
+  <UserModel Key="5">
+    <Model Key="6" Name="Internal" RunModelType="Compiled">
+      <ModelData Key="7" UsePreviousRoundFiles="False" FailedIfMissingValue="False" ErrorFile="" MaxTries="3" HasMultipleRuns="False" FailedIfErrorFileExists="False" TimeOut="300" CreateArguments="" InputFileFormat="*.*" StopOnFailure="False" UsePreviousFiles="False" ApplyModelFactor="False" InputFilePerComponent="False" OperationType="Multiply" RetryWhenFailed="False" CopyInputType="File" OutputFiles="" ExcludeFiles="" InputFilePerScenario="False" OpenArguments="" InputFilePerRun="False" FailedIfOutputFilesAreNotUpdated="False" FailedIfTimeOut="False" CleanUpFiles="True" RunSameDirectory="True">
+        <SeriesProcessings />
+        <ScenarioStochast Key="8" DerivedMean="NaN" Name="Scenario" DistributionType="Discrete" />
+        <SeriesXValuesList />
+        <PostProcessor Key="9" Arguments="" PythonVersion="3" />
+        <PreProcessor Key="10" Arguments="" PythonVersion="3" />
+      </ModelData>
+      <CompiledRunModel Key="11" SourceCode="Z = p * m_R * R - aQ *  m_Q *Q - (1-aQ) * G;" Language="CSharp" Version="3" AddMoreVariables="False" Invocations="36">
+        <InputParameters>
+          <InputParameter Key="12" Name="p" />
+          <InputParameter Key="13" Name="m_R" />
+          <InputParameter Key="14" Name="R" />
+          <InputParameter Key="15" Name="m_Q" />
+          <InputParameter Key="16" Name="Q" />
+          <InputParameter Key="17" Name="G" />
+          <InputParameter Key="18" Name="aQ" />
+        </InputParameters>
+        <OutputParameters>
+          <OutputParameter Key="19" Name="Z" />
+        </OutputParameters>
+        <Tasks />
+      </CompiledRunModel>
+    </Model>
+  </UserModel>
+  <StatisticsProject Key="20" ShouldTestValue="False" TestValue="0" CalculatedCorrelationMatrix="True">
+    <QuantileDefinition Key="21" Value="0.5" />
+    <Parameters>
+      <Parameter Key="22" Model="6" Name="p" DistributionType="Deterministic" Mean="1.5" />
+      <Parameter Key="23" Model="6" Name="m_R" DistributionType="LogNormal" Mean="1" Deviation="0.14999999999999999" Shift="0" />
+      <Parameter Key="24" Model="6" Name="R" DistributionType="Normal" Mean="1" Deviation="0.14999999999999999" />
+      <Parameter Key="25" Model="6" Name="m_Q" DistributionType="LogNormal" Mean="1" Deviation="0.10000000000000001" Shift="0" />
+      <Parameter Key="26" DerivedDeviation="0.15001086252174023" DerivedMean="1.0000000000000007" Model="6" Name="Q" DistributionType="Weibull" Shift="0.93132899355653231" Scale="0.035397735508307791" Shape="0.5084543489159038" />
+      <Parameter Key="27" Model="6" Name="G" DistributionType="Normal" Mean="1" Deviation="0.050000000000000003" />
+      <Parameter Key="28" Model="6" Name="aQ" DistributionType="Deterministic" Mean="0.10000000000000001" />
+    </Parameters>
+    <CorrelationMatrix Key="29">
+      <Correlations />
+    </CorrelationMatrix>
+    <ResponseParameters>
+      <ResponseParameter Key="30" Model="6" Name="Z" DistributionType="Deterministic" Mean="0" Deviation="0" />
+    </ResponseParameters>
+    <ImportedParameters />
+    <LinksMatrix Key="31">
+      <MappingMatrix Key="32">
+        <Mappings />
+      </MappingMatrix>
+      <RoundStochast Key="33" Name="Round" DistributionType="Deterministic" Mean="0" />
+      <StochastLinks>
+        <StochastLink Key="34" Target="22" AggregationType="Last" DefaultLink="True" FromPreviousRound="False" InitialValue="0" Cumulative="False" />
+        <StochastLink Key="35" Target="23" AggregationType="Last" DefaultLink="True" FromPreviousRound="False" InitialValue="0" Cumulative="False" />
+        <StochastLink Key="36" Target="24" AggregationType="Last" DefaultLink="True" FromPreviousRound="False" InitialValue="0" Cumulative="False" />
+        <StochastLink Key="37" Target="25" AggregationType="Last" DefaultLink="True" FromPreviousRound="False" InitialValue="0" Cumulative="False" />
+        <StochastLink Key="38" Target="26" AggregationType="Last" DefaultLink="True" FromPreviousRound="False" InitialValue="0" Cumulative="False" />
+        <StochastLink Key="39" Target="27" AggregationType="Last" DefaultLink="True" FromPreviousRound="False" InitialValue="0" Cumulative="False" />
+        <StochastLink Key="40" Target="28" AggregationType="Last" DefaultLink="True" FromPreviousRound="False" InitialValue="0" Cumulative="False" />
+      </StochastLinks>
+    </LinksMatrix>
+    <ImportedCorrelationMatrix Key="41">
+      <Correlations />
+    </ImportedCorrelationMatrix>
+    <Mappings RefKey="32" />
+  </StatisticsProject>
+  <MeasurementsProject Key="42">
+    <MeasurementSets />
+  </MeasurementsProject>
+  <RunModelProject Key="43">
+    <SeriesStochasts />
+    <ScenarioDefinition Key="44" ScenarioType="Single" Target="0" Tolerance="0.001" Probability="0.90000000000000002" ProbabilisticTask="RunModel" UseDesignValues="False" FromFile="False">
+      <ParameterDefinitions>
+        <ParameterDefinition Key="45" Property="Mean" SettingsProperty="Intervals" LimitStateProperty="Resistance" ModelProperty="Rounds" MaxValue="10" Step="1" MinValue="0" StepType="Table">
+          <Template Key="46" FileName="" Caption="" CompareType="All" SeparateVariable="" AggregationType="Last" SecondSeparateVariable="" CompareValue="0" ValuePerRun="False" ApplyModelFactor="True" VariationType="Value" />
+          <ComponentCollection Key="47" GroupVariable="" Name="" ParameterMergeType="Component" Type="Output" FileName="" Caption="" Attribute="" Subdivision="" Components="">
+            <CompositeStochasts />
+          </ComponentCollection>
+        </ParameterDefinition>
+      </ParameterDefinitions>
+    </ScenarioDefinition>
+  </RunModelProject>
+  <SensitivityProject Key="48">
+    <ScenarioDefinition Key="49" ScenarioType="Single" Target="0" Tolerance="0.001" Probability="0.90000000000000002" ProbabilisticTask="Sensitivity" UseDesignValues="False" FromFile="False">
+      <ParameterDefinitions>
+        <ParameterDefinition Key="50" Property="Mean" SettingsProperty="Intervals" LimitStateProperty="Resistance" ModelProperty="Rounds" MaxValue="10" Step="1" MinValue="0" StepType="Table">
+          <Template Key="51" FileName="" Caption="" CompareType="All" SeparateVariable="" AggregationType="Last" SecondSeparateVariable="" CompareValue="0" ValuePerRun="False" ApplyModelFactor="True" VariationType="Value" />
+          <ComponentCollection Key="52" GroupVariable="" Name="" ParameterMergeType="Component" Type="Output" FileName="" Caption="" Attribute="" Subdivision="" Components="">
+            <CompositeStochasts />
+          </ComponentCollection>
+        </ParameterDefinition>
+      </ParameterDefinitions>
+    </ScenarioDefinition>
+  </SensitivityProject>
+  <FragilityProject Key="53">
+    <FragilityDefinition Key="54" UseFragilityCurves="False" StepType="Table" MinValue="0" MaxValue="10" Step="1" LimitStateCombineMethod="None">
+      <FragilityValues />
+      <LimitStateFunctions />
+    </FragilityDefinition>
+  </FragilityProject>
+  <ProxyProject Key="55">
+    <ProxyDefinition Key="56" LowDefinition="0.10000000000000001" HighDefinition="0.90000000000000002" ApproximationMethod="Engine" Order="FirstOrder" Side="Both" SpaceType="X" WeightType="Equal" Convergence="0.01" BetaSphere="1.5" ProxyVariablesSelection="Varying" NumberOfRuns="10" InitializationMethod="Double" VarianceFactor="1" MaxProxyIterations="0" AdditionalWeightFactor="1.1000000000000001" RunModel="6" Seed="0">
+      <Tasks />
+      <ProxyValueDefinitions />
+      <FirstOrderDoubleProxyModel type="FirstOrderDoubleProxyModel" Key="57">
+        <Coefficients Key="58">
+          <ResponseCoefficients />
+          <ProxiedParameters />
+        </Coefficients>
+      </FirstOrderDoubleProxyModel>
+      <Settings Key="59" KernelType="SquaredExponential" LearnFunctionType="FailQualification" UseNoise="False" UncertaintyBand="0.050000000000000003" ConvergenceFunctionType="Stable" StableIterations="1" />
+    </ProxyDefinition>
+  </ProxyProject>
+  <ComputationalProject Key="60" RunModelResponse="" SensitivityResponse="" />
+  <CalibrationProject Key="61">
+    <ScenarioDefinition Key="62" ScenarioType="Single" Target="0" Tolerance="0.001" Probability="0.90000000000000002" ProbabilisticTask="Calibration" UseDesignValues="False" FromFile="False">
+      <ParameterDefinitions>
+        <ParameterDefinition Key="63" Property="Mean" SettingsProperty="Intervals" LimitStateProperty="Resistance" ModelProperty="Rounds" MaxValue="10" Step="1" MinValue="0" StepType="Table">
+          <Template Key="64" FileName="" Caption="" CompareType="All" SeparateVariable="" AggregationType="Last" SecondSeparateVariable="" CompareValue="0" ValuePerRun="False" ApplyModelFactor="True" VariationType="Value" />
+          <ComponentCollection Key="65" GroupVariable="" Name="" ParameterMergeType="Component" Type="Output" FileName="" Caption="" Attribute="" Subdivision="" Components="">
+            <CompositeStochasts />
+          </ComponentCollection>
+        </ParameterDefinition>
+      </ParameterDefinitions>
+    </ScenarioDefinition>
+    <OptimizationSettings Key="66" Method="Grid" MinimumSamples="1" ExternalArguments="{n}" Version="3" MaximumSamples="10000">
+      <GridSettings Key="67" Move="False" MaxGridMoves="50" Refinements="0" Steps="10" />
+      <GeneticSettings Key="68" EliteCount="2" PopulationCount="60" GenerationCount="50" MutationRate="0.29999999999999999" CrossOverScatterFraction="0" CrossOverSinglePointFraction="0.69999999999999996" CrossOverDoublePointFraction="0.29999999999999999" MutationJumpFraction="0" MutationRandomFrequency="Never" MutationInverseFraction="0.099999999999999978" MutationCreepReduction="0.050000000000000003" Seed="1" InitializePopulationMethod="Uniform" CrossOverRandomFrequency="Never" CrossOverRandomEffect="Free" MutationCreepFraction="0.90000000000000002" MutationRandomEffect="Free" />
+      <LevenbergMarquardSettings Key="69" MinIterations="10" MaxIterations="100" Shift="0.01" DriftGrant="0.00010000000000000001" LambdaLower="0.0015625000000000001" LambdaUpper="1024" LambdaBoost="4" StopChangeLess="1.0000000000000001E-05" DecompositionType="SVD" />
+      <BeeswarmSettings Key="70" Delta="0.69999999999999996" Beta="0.5" DifferentialWeight="0.29999999999999999" CrossOver="0.29999999999999999" PopulationCount="125" GenerationCount="24" Seed="0" EliteCount="2" StopAfterNonImprovingGenerations="100" />
+      <ParameterSettings />
+      <DataAssimilationSettings Key="71" MaxIterations="100" MaxInnerIterations="10" Precision="0.001">
+        <OptimizationOptions Key="72" InputConstrained="False" />
+      </DataAssimilationSettings>
+      <OptimizationOptions RefKey="72" />
+      <ResponseParameterSettings />
+    </OptimizationSettings>
+  </CalibrationProject>
+  <ReliabilityProject Key="73" ScaleFactor="1" ConvertedToDesignPoints="False">
+    <Settings Key="74" EpsilonZStepSize="0.01" LimitStateCombineMethod="OneFails" SubsetFraction="0.10000000000000001" MaximumIterations="50" FractionFailed="0.10000000000000001" Umin="-8" LoopVarianceIncrement="0.5" HandleInvalidType="Ignore" RadiusSphereSearch="10" StepSizeFactor="0.01" MaximumSamples="10000" Task="Failure" RelaxationFactor="0.75" EpsWeightSample="0.10000000000000001" DesignPointCombineMethod="ImportanceSampling" MinimumFailedSamples="0" Umax="8" DiscreteValuesExpanded="True" MaxBeta="40" Version="3" StartMethod="None" UncertaintyDistributionType="Table" MinimumSamples="1000" MinimumIterations="20" Dsdu="1" EpsilonUStepSize="0.01" GradientType="OneDirection" MaximumSamplesNoResult="10000" Method="FORM" IsRepeatableRandom="True" Intervals="200" StartPointOnLimitState="False" EpsilonBeta="0.01" RestrictedLimitStateCombineMethod="OneFails" VarianceFactor="1.5" ModelVaryingType="Monotone" MaxClusters="1" OptimizeNumberClusters="False" DesignPointMethod="CentreOfGravity" StartValue="0" MarkovChainDeviation="1" AdaptiveStartPoint="False" ScenariosExpanded="False" ExperimentalArguments="{n}" VariationCoefficientFailure="0.10000000000000001" NumberSamplesProbability="0.050000000000000003" RestartStepSize="0" MaximumLengthU="20" MaximumLengthStartPoint="6" StepSize="0.29999999999999999">
+      <StochastSettingsSet Key="75">
+        <StochastSettings>
+          <StochastSetting Stochast="23" UseDefault="True" StartValueX="0.98893635286829751" VarianceFactor="1.5" XMin="0.29985497292293251" XMax="3.2615604153272133" Intervals="200" />
+          <StochastSetting Stochast="24" UseDefault="True" StartValueX="1" VarianceFactor="1.5" XMin="-0.19999999999999996" XMax="2.2000000000000002" Intervals="200" />
+          <StochastSetting Stochast="25" UseDefault="True" StartValueX="0.99503719020998915" VarianceFactor="1.5" XMin="0.44798930197008813" XMax="2.2100952088518806" Intervals="200" />
+          <StochastSetting Stochast="26" UseDefault="True" StartValueX="0.94854449854104816" VarianceFactor="1.5" XMin="0.93132899355653231" XMax="39.33928162532542" Intervals="200" />
+          <StochastSetting Stochast="27" UseDefault="True" StartValueX="1" VarianceFactor="1.5" XMin="0.59999999999999998" XMax="1.3999999999999999" Intervals="200" />
+        </StochastSettings>
+      </StochastSettingsSet>
+      <Quantiles>
+        <Quantile Key="76" ReliabilityIndex="-1.2815519386788523" />
+        <Quantile Key="77" ReliabilityIndex="0.12566124466137996" />
+      </Quantiles>
+    </Settings>
+    <LimitStateFunctions>
+      <LimitStateFunction Key="78" RoundType="LastRound" Round="1" ResponseParameter="30" LimitStateType="LessThan" CompareType="Value" Resistance="0" Normalize="False" />
+    </LimitStateFunctions>
+    <ScenarioDefinition Key="79" ScenarioType="Single" Target="0" Tolerance="0.001" Probability="0.90000000000000002" ProbabilisticTask="Failure" UseDesignValues="False" FromFile="False">
+      <ParameterDefinitions>
+        <ParameterDefinition Key="80" Property="Mean" SettingsProperty="Intervals" LimitStateProperty="Resistance" ModelProperty="Rounds" MaxValue="10" Step="1" MinValue="0" StepType="Table">
+          <Template Key="81" FileName="" Caption="" CompareType="All" SeparateVariable="" AggregationType="Last" SecondSeparateVariable="" CompareValue="0" ValuePerRun="False" ApplyModelFactor="True" VariationType="Value" />
+          <ComponentCollection Key="82" GroupVariable="" Name="" ParameterMergeType="Component" Type="Output" FileName="" Caption="" Attribute="" Subdivision="" Components="">
+            <CompositeStochasts />
+          </ComponentCollection>
+        </ParameterDefinition>
+      </ParameterDefinitions>
+    </ScenarioDefinition>
+    <DesignPoint type="Realization" Key="83" LimitStateFunction="78" EvaluationSetID="1" Identifier="Z" ReturnPeriod="24.430237675867268" NumericIdentifiers="" Convergence="0.0030809413414869488" Beta="1.7494516715274058" ProbabilityFailure="0.040106444663477521" ProbabilityNonFailure="0.95989355533652243">
+      <Alphas>
+        <Alpha Parameter="23" Variable="m_R" Alpha="0.61577900727536772" AlphaCorrelated="0.61577900727536772" InfluenceFactor="0.37918378580103745" U="-1.0772756135693786" PhysicalValue="0.84213191526439124" />
+        <Alpha Parameter="24" Variable="R" Alpha="0.76542310047310869" AlphaCorrelated="0.76542310047310869" InfluenceFactor="0.58587252273786672" U="-1.3390707225483693" PhysicalValue="0.79913939161774461" />
+        <Alpha Parameter="25" Variable="m_Q" Alpha="-0.038648823110927273" AlphaCorrelated="-0.038648823110927273" InfluenceFactor="0.0014937315278597465" U="0.067614248193978752" PhysicalValue="1.0017710131747168" />
+        <Alpha Parameter="26" Variable="Q" Alpha="-0.019382089751558515" AlphaCorrelated="-0.019382089751558515" InfluenceFactor="0.00037566540313746971" U="0.033908029313558248" PhysicalValue="0.94990960887130738" />
+        <Alpha Parameter="27" Variable="G" Alpha="-0.18186339524516401" AlphaCorrelated="-0.18186339524516401" InfluenceFactor="0.033074294530098754" U="0.31816122080130144" PhysicalValue="1.015908061040065" />
+      </Alphas>
+      <ReliabilityResults>
+        <ReliabilityResult Run="0" Index="0" Reliability="1.5333030098488258" Samples="6" ConvBeta="1.5333030098488258" />
+        <ReliabilityResult Run="0" Index="1" Reliability="1.7262626734335107" Samples="12" ConvBeta="1.2533842620586477" />
+        <ReliabilityResult Run="0" Index="2" Reliability="1.7482916020195956" Samples="18" ConvBeta="0.22185354392525108" />
+        <ReliabilityResult Run="0" Index="3" Reliability="1.7495127263473294" Samples="24" ConvBeta="0.051264729132162068" />
+        <ReliabilityResult Run="0" Index="4" Reliability="1.7494881026099762" Samples="30" ConvBeta="0.01251825908850855" />
+        <ReliabilityResult ProxyIteration="0" Run="0" Index="5" Reliability="1.7494516715274058" Samples="36" ConvBeta="0.0030809413414869488" />
+      </ReliabilityResults>
+      <ContributingRealizations />
+      <RunReliabilityResults>
+        <RunReliabilityResult ProxyIteration="0" Run="0" Index="5" Reliability="1.7494516715274058" Samples="36" ConvBeta="0.0030809413414869488" />
+      </RunReliabilityResults>
+    </DesignPoint>
+  </ReliabilityProject>
+  <ModelUncertaintyProject Key="84" AllResponseFunctions="True">
+    <BandWidth Key="85" QuantileUnit="Fractions" HasQuantiles="False">
+      <Probabilities>
+        <Probability Key="86" ReliabilityIndex="-1.2815519386788523" />
+        <Probability Key="87" ReliabilityIndex="1.2815519386788523" />
+      </Probabilities>
+      <Stochasts />
+      <CorrelationMatrix Key="88">
+        <Correlations />
+      </CorrelationMatrix>
+    </BandWidth>
+    <Settings Key="89" EpsilonZStepSize="0.01" LimitStateCombineMethod="OneFails" SubsetFraction="0.10000000000000001" MaximumIterations="50" FractionFailed="0.10000000000000001" Umin="-8" LoopVarianceIncrement="0.5" HandleInvalidType="Ignore" RadiusSphereSearch="10" StepSizeFactor="0.01" MaximumSamples="10000" Task="BandWidth" RelaxationFactor="0.75" EpsWeightSample="0.10000000000000001" DesignPointCombineMethod="ImportanceSampling" MinimumFailedSamples="0" Umax="8" DiscreteValuesExpanded="True" MaxBeta="40" Version="3" StartMethod="None" UncertaintyDistributionType="Table" MinimumSamples="1000" MinimumIterations="20" Dsdu="1" EpsilonUStepSize="0.01" GradientType="OneDirection" MaximumSamplesNoResult="10000" Method="FOSM" IsRepeatableRandom="True" Intervals="200" StartPointOnLimitState="False" EpsilonBeta="0.01" RestrictedLimitStateCombineMethod="OneFails" VarianceFactor="1.5" ModelVaryingType="Monotone" MaxClusters="1" OptimizeNumberClusters="False" DesignPointMethod="CentreOfGravity" StartValue="0" MarkovChainDeviation="1" AdaptiveStartPoint="False" ScenariosExpanded="False" ExperimentalArguments="{n}" VariationCoefficientFailure="0.10000000000000001" NumberSamplesProbability="0.050000000000000003" RestartStepSize="0" MaximumLengthU="20" MaximumLengthStartPoint="6" StepSize="0.29999999999999999">
+      <StochastSettingsSet Key="90">
+        <StochastSettings />
+      </StochastSettingsSet>
+      <Quantiles>
+        <Quantile Key="91" ReliabilityIndex="-1.2815519386788523" />
+        <Quantile Key="92" ReliabilityIndex="0.12566124466137996" />
+      </Quantiles>
+    </Settings>
+    <ScenarioDefinition Key="93" ScenarioType="Single" Target="0" Tolerance="0.001" Probability="0.90000000000000002" ProbabilisticTask="BandWidth" UseDesignValues="False" FromFile="False">
+      <ParameterDefinitions>
+        <ParameterDefinition Key="94" Property="Mean" SettingsProperty="Intervals" LimitStateProperty="Resistance" ModelProperty="Rounds" MaxValue="10" Step="1" MinValue="0" StepType="Table">
+          <Template Key="95" FileName="" Caption="" CompareType="All" SeparateVariable="" AggregationType="Last" SecondSeparateVariable="" CompareValue="0" ValuePerRun="False" ApplyModelFactor="True" VariationType="Value" />
+          <ComponentCollection Key="96" GroupVariable="" Name="" ParameterMergeType="Component" Type="Output" FileName="" Caption="" Attribute="" Subdivision="" Components="">
+            <CompositeStochasts />
+          </ComponentCollection>
+        </ParameterDefinition>
+      </ParameterDefinitions>
+    </ScenarioDefinition>
+    <ResponseFunctions />
+  </ModelUncertaintyProject>
+  <RealizationsProject Key="97" Notes="">
+    <Statistics Key="98" ModelRuns="36" ReusedRuns="0" Version="2.4.2.2739" FailedRuns="0" Calculated="02/13/2023 20:20:31" />
+    <SpecialParameters>
+      <SpecialParameter Key="99" Property="Z" DistributionType="Deterministic" Mean="0" />
+      <SpecialParameter Key="100" Property="Beta" DistributionType="Deterministic" Mean="0" />
+    </SpecialParameters>
+    <RealizationSet Key="101" XStochast="23" YStochast="24" Count="1000" />
+    <EvaluationSet Key="102" XStochast="30" YStochast="23" />
+  </RealizationsProject>
+</Project>
